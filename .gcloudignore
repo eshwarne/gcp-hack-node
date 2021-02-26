@@ -1,0 +1,9 @@
+.gcloudignore
+.git
+.gitignore
+/default/
+node_modules/
+*.mp3
+*.wav
+*.txt
+*.m4a

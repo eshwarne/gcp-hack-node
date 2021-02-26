@@ -1,0 +1,23 @@
+{
+  "name": "nodejsbackendfortesting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "eshwar",
+  "license": "ISC",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "@google-cloud/dialogflow": "^3.3.0",
+    "@google-cloud/speech": "^4.2.0",
+    "@google-cloud/translate": "^6.1.0",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "expo-file-system": "^10.0.0",
+    "express": "^4.17.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "socket.io": "^3.1.1"
+  }
+}

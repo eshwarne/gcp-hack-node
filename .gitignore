@@ -1,0 +1,7 @@
+**/node_modules
+gcpcreds
+/ngrok.exe
+*.mp3
+*.wav
+*.txt
+*.m4a
