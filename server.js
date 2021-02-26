@@ -47,7 +47,7 @@ const payViaBeneficiary = async (
   });
 };
 const fs = require("fs");
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit:'50mb'}));
 const PORT = process.env.PORT || 4000;
 //sendMessage POST
 //userId,query, prevResponse
@@ -65,7 +65,6 @@ app.post("/sendMessage", async (req, res) => {
       );
       if(intentResponse.queryResult.intent.displayName == "check-account-balance"){
         const response = await getBalance(userId)
-        console.log(response)
         res.json({
           success: true,
           audio: Buffer.from(intentResponse.outputAudio).toString("base64"),
@@ -130,9 +129,10 @@ app.post("/sendMessage", async (req, res) => {
       .output(path.join(os.tmpdir(), req.body.userId + ".mp3"))
       .save(encodedPath)
       .on("end", async () => {
+        console.log("WRITTEN FILE")
         try {
           const intentResponse = await dialogFlow.executeQueries(
-            req.body.query,
+            encodedPath,
             req.body.userId,
             req.body.prevResponse,
             true
@@ -153,7 +153,7 @@ app.post("/sendMessage", async (req, res) => {
             res.json({
               success: true,
               audio: Buffer.from(intentResponse.outputAudio).toString("base64"),
-              text: "Your account balance is "+response,
+              text: "Your last transaction was rupees "+response[0].AMOUNT+" and remark was "+response[0].remark,
               response:response
             });
           }
@@ -169,17 +169,19 @@ app.post("/sendMessage", async (req, res) => {
             });
           }
           else{
+            console.log("SUCCESS")
+          
             res.json({
               success: true,
               audio: Buffer.from(intentResponse.outputAudio).toString("base64"),
               text:intentResponse.queryResult.fulfillmentText,
-              
             });
           }
          
          
         
         } catch (error) {
+          console.log(error)
           res.json(error);
         }
       });

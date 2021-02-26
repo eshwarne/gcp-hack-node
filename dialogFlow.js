@@ -12,10 +12,7 @@ async function detectIntent(sessionId, query, languageCode, isAudio) {
 
   let request;
   if (isAudio) {
-    const filename = query;
-
     const inputAudio = fs.readFileSync(query).toString("base64");
-
     request = {
       session: sessionPath,
       queryInput: {
@@ -78,7 +75,7 @@ async function executeQueries(
 
         resolve(intentResponse);
       } catch (error) {
-        console.log(error);
+      
         reject(error);
       }
     }
@@ -90,7 +87,7 @@ async function executeQueries(
       ) {
         query += " rupees";
       }
-      console.log(`Sending Query: ${query}`);
+     
 
       intentResponse = await detectIntent(
         sessionId,
@@ -98,10 +95,10 @@ async function executeQueries(
         languageCode,
         isAudio
       );
-      console.log(intentResponse)
+      
       resolve(intentResponse);
     } catch (error) {
-      console.log(error);
+    
       reject(error);
     }
   });
