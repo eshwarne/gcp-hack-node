@@ -1,7 +1,7 @@
 const dialogflow = require("@google-cloud/dialogflow");
 const util = require("util");
 const sessionClient = new dialogflow.SessionsClient();
-const projectId = "hack-titans";
+const projectId = "gcp-hackathon-demo-project";
 const fs = require("fs");
 
 async function detectIntent(sessionId, query, languageCode, isAudio) {
