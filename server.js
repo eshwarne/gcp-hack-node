@@ -8,7 +8,7 @@ const path = require("path");
 const os = require("os");
 ffmpeg.setFfmpegPath(ffmpegPath);
 const axios = require("axios");
-const javaServer = "https://hecktitan-java-dot-hack-titans.el.r.appspot.com";
+const javaServer = "https://hecktitan-java-new-dot-gcp-hackathon-demo-project.du.r.appspot.com";
 const getTransactions = async (userId) => {
   return new Promise(async (resolve, reject) => {
     const response = await axios.get(javaServer + `/transactions?userId=${userId}&startDate=2015-01-01&endDate=2021-02-26`);
