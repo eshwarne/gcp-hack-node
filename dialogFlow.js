@@ -12,7 +12,7 @@ async function detectIntent(sessionId, query, languageCode, isAudio) {
 
   let request;
   if (isAudio) {
-    const inputAudio = fs.readFileSync(query).toString("base64");
+    const inputAudio = fs.readFileSync().toString("base64");
     request = {
       session: sessionPath,
       queryInput: {
